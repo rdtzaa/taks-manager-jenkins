@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     tools {
-        nodejs 'NodeJS-18'   // harus sama dengan nama yang kamu set di Tools
+        nodejs 'NodeJS-22'   // harus sama dengan nama yang kamu set di Tools
     }
 
     environment {

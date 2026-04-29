@@ -28,7 +28,7 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv('sonarqube8.0') {
+                withSonarQubeEnv('sonarserver') {
                     sh 'npx sonar-scanner'
                 }
             }

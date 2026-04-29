@@ -1,6 +1,10 @@
 pipeline {
     agent any
 
+    tools {
+        nodejs 'NodeJS-18'   // harus sama dengan nama yang kamu set di Tools
+    }
+
     environment {
         APP_NAME = 'task-manager'
         NODE_ENV = 'test'

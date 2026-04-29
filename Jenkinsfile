@@ -2,11 +2,10 @@ pipeline {
     agent any
 
     tools {
-        nodejs 'NodeJS-22'   // harus sama dengan nama yang kamu set di Tools
+        nodejs 'NodeJS-22'
     }
 
     environment {
-        APP_NAME = 'task-manager'
         NODE_ENV = 'test'
     }
 
@@ -15,12 +14,6 @@ pipeline {
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
         stage('Install') {
             steps {
                 sh 'npm ci'
@@ -35,7 +28,6 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                // SONAR_HOST_URL & SONAR_TOKEN otomatis dari Jenkins config
                 withSonarQubeEnv('SonarQube') {
                     sh 'npx sonar-scanner'
                 }

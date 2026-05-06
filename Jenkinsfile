@@ -7,6 +7,10 @@ pipeline {
 
     environment {
         NODE_ENV = 'test'
+        SONARQUBE_ENV = 'sonarserver'
+        PROJECT_KEY   = 'go-project'
+        PROJECT_NAME  = 'go-project'
+        SCANNER_HOME  = tool 'sonarqube8.0'
     }
 
     triggers {
@@ -28,7 +32,7 @@ pipeline {
 
         stage('SonarQube Analysis') {
             steps {
-                withSonarQubeEnv('sonarserver') {
+                withSonarQubeEnv("${SONARQUBE_ENV}") {
                     sh 'npx sonar-scanner'
                 }
             }
